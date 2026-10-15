@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#1f6feb">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>네모로직</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 홈 -->
+<section id="home" class="screen">
+  <header class="top">
+    <h1>네모로직</h1>
+    <button id="btnSettings" class="icon" aria-label="설정">⚙</button>
+  </header>
+  <div class="homebody">
+    <div id="resume"></div>
+    <nav class="tabs">
+      <button data-tab="course" class="on">코스</button>
+      <button data-tab="free">직접 설정</button>
+      <button data-tab="album">도감</button>
+    </nav>
+    <div id="tabCourse" class="tab"></div>
+    <div id="tabAlbum" class="tab" hidden></div>
+    <div id="tabFree" class="tab" hidden>
+      <div class="card">
+        <label class="fl">칸 수 <b id="fsizeOut">15 × 15</b></label>
+        <input id="fsize" type="range" min="10" max="25" value="15">
+        <div class="hint-text">10 ~ 25칸</div>
+        <label class="fl">난이도</label>
+        <div id="fdiff" class="seg">
+          <button data-d="0">쉬움</button>
+          <button data-d="1" class="on">보통</button>
+          <button data-d="2">어려움</button>
+        </div>
+        <div class="hint-text">무슨 그림인지는 다 풀어야 알 수 있어요! 어려울수록 더 복잡한 그림이 나와요.</div>
+        <button id="fstart" class="primary big">새 퍼즐 시작</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 게임 -->
+<section id="game" class="screen" hidden>
+  <header class="gtop">
+    <button id="gBack" class="icon" aria-label="나가기">←</button>
+    <div id="gTitle"></div>
+    <div id="gTime">00:00</div>
+  </header>
+  <div id="loading" class="loading">퍼즐 만드는 중…</div>
+  <div id="scroller" class="scroller" hidden>
+    <div class="board" id="board">
+      <div class="corner"></div>
+      <div class="colclues" id="colclues"></div>
+      <div class="rowclues" id="rowclues"></div>
+      <div class="cells" id="cells"></div>
+    </div>
+  </div>
+  <footer class="gbar">
+    <div class="row">
+      <button class="tool on" data-tool="fill"><i class="ic-fill"></i>채우기</button>
+      <button class="tool" data-tool="x"><i class="ic-x">✕</i>엑스</button>
+      <div class="inkhint">✏ 그린 대로 인식해요<br><small>칠하면 채워지고, 사선 2개(✕)를 그리면 엑스가 돼요</small></div>
+    </div>
+    <div class="row small">
+      <button id="btnUndo">↶ 되돌리기</button>
+      <button id="btnHint">💡 힌트 <b id="hintLeft">3</b></button>
+      <button id="btnZoomOut" aria-label="축소">－</button>
+      <button id="btnFit">맞춤</button>
+      <button id="btnZoomIn" aria-label="확대">＋</button>    </div>
+  </footer>
+</section>
+
+<dialog id="dlg"></dialog>
+<script src="app.js"></script>
+</body>
+</html>
